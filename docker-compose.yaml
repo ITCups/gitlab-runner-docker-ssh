@@ -1,0 +1,24 @@
+version: "3.5"
+
+volumes:
+  gitlab-runner-config:
+
+services:
+  gitlab-runner:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./gitlab-runner-ssh/Dockerfile
+    container_name: gitlab-runner
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - gitlab-runner-config:/etc/gitlab-runner
+      - ./gitlab-runner-ssh/config.toml:/etc/gitlab-runner/config.toml
+  
+  alpine-dev:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./alpine-dev-ssh/Dockerfile
+    container_name: alpine-dev

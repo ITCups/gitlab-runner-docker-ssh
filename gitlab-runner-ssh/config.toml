@@ -1,0 +1,23 @@
+concurrent = 3
+check_interval = 0
+
+[session_server]
+  session_timeout = 1800
+
+[[runners]]
+  name = "simplenav"
+  url = "https://repos.21-school.ru"
+  id = 1944
+  token = "_A2-1PVrDWRg4v_xWR7a"
+  token_obtained_at = 2022-12-15T19:51:45Z
+  token_expires_at = 0001-01-01T00:00:00Z
+  executor = "ssh"
+  [runners.custom_build_dir]
+  [runners.cache]
+  [runners.ssh]
+    user = "root"
+    password = "qwerty"
+    host = "alpine-dev"
+    disable_strict_host_key_checking = true
+    port = "22"
+    identity_file = "/root/.ssh/id_rsa"
