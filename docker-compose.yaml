@@ -22,3 +22,10 @@ services:
       context: .
       dockerfile: ./alpine-dev-ssh/Dockerfile
     container_name: alpine-dev
+
+  ubuntu-dev:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./ubuntu-dev-ssh/Dockerfile
+    container_name: ubuntu-dev

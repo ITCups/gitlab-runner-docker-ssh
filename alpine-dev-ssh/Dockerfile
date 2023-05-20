@@ -7,6 +7,7 @@ https://dl-cdn.alpinelinux.org/alpine/edge/testing/\n'\
 >> /etc/apk/repositories
 
 RUN apk --no-cache --upgrade add \
+    openssh \
     openssh-server \
     git \
     git-lfs \
@@ -24,7 +25,11 @@ RUN apk --no-cache --upgrade add \
 	  zsh \
     texinfo \
     gitlab-runner \
-    cmake
+    cmake \
+    gtest \
+    gtest-dev \
+    check-dev \
+    subunit-dev
     # qt6-qtbase-dev
 
 RUN printf 'qwerty\nqwerty\n' | passwd root
@@ -42,7 +47,6 @@ RUN ssh-keygen -A
 # 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git && \
 # 	echo "source $(pwd)/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
 
-COPY . /project
-WORKDIR "/project"
+WORKDIR "/root"
 
 ENTRYPOINT ["/usr/sbin/sshd", "-D"]
